@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anoohya's Box of Surprises</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#fff4f1;--ink:#2e1636;--card:#ffffff;--plum:#4a1d5c;--pink:#e5457a;--gold:#f6b13c;--mute:#6f5a78;--line:#ecd9de;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d0f24;--ink:#fbeef2;--card:#2a1634;--plum:#f1c7ff;--pink:#ff6b9a;--gold:#f6b13c;--mute:#c4adcc;--line:#43284f}}
+:root[data-theme="dark"]{--bg:#1d0f24;--ink:#fbeef2;--card:#2a1634;--plum:#f1c7ff;--pink:#ff6b9a;--gold:#f6b13c;--mute:#c4adcc;--line:#43284f}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 'DM Sans',system-ui,sans-serif}
+h1,h2,h3{font-family:'Bricolage Grotesque','DM Sans',sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:19px;text-decoration:none}
+nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;font-size:14px;font-weight:500}
+nav a{text-decoration:none}
+@media(max-width:620px){nav ul li:not(:last-child){display:none}}
+.btn{display:inline-block;border:0;cursor:pointer;background:var(--pink);color:#fff;font:700 15px 'DM Sans',sans-serif;padding:13px 22px;border-radius:999px;text-decoration:none}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:56px 0 44px}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:34px}}
+.hero h1{font-size:clamp(38px,6.4vw,66px);font-weight:800;letter-spacing:-.02em}
+.hero p{max-width:46ch;color:var(--mute);font-size:18px;margin:18px 0 26px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.stage{position:relative;height:330px;display:flex;align-items:flex-end;justify-content:center}
+.bx{position:relative;width:210px;height:150px;cursor:pointer;border:0;background:none;padding:0}
+.base{position:absolute;bottom:0;width:210px;height:120px;background:var(--pink);border-radius:6px 6px 14px 14px;box-shadow:inset 0 -14px 0 rgba(0,0,0,.12)}
+.base::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:26px;margin-left:-13px;background:var(--gold)}
+.lid{position:absolute;left:-8px;bottom:104px;width:226px;height:44px;background:var(--plum);border-radius:8px;transform-origin:left bottom;transition:transform .6s cubic-bezier(.3,1.5,.5,1)}
+.lid::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:26px;margin-left:-13px;background:var(--gold)}
+.pop{position:absolute;left:50%;bottom:90px;font-size:38px;opacity:0;transform:translate(-50%,0) scale(.3);transition:transform .7s cubic-bezier(.2,1.4,.4,1),opacity .3s}
+.open .lid{transform:rotate(-38deg) translateY(-6px)}
+.open .pop{opacity:1}
+.open .p1{transform:translate(-150%,-130px) scale(1) rotate(-14deg)}
+.open .p2{transform:translate(-50%,-190px) scale(1.15)}
+.open .p3{transform:translate(50%,-130px) scale(1) rotate(14deg)}
+.open .p4{transform:translate(-215%,-50px) scale(.85)}
+.open .p5{transform:translate(115%,-50px) scale(.85)}
+.hint{position:absolute;bottom:-26px;width:100%;text-align:center;font-size:13px;color:var(--mute)}
+section{padding:54px 0}
+section h2{font-size:clamp(28px,4.4vw,42px);font-weight:800;margin-bottom:8px}
+.sub{color:var(--mute);margin:0 0 28px;max-width:56ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column}
+.card .em{font-size:34px}
+.card h3{font-size:22px;margin:8px 0 6px}
+.card p{margin:0 0 14px;color:var(--mute);font-size:15px;flex:1}
+.price{font:800 22px 'Bricolage Grotesque',sans-serif}
+.price small{font:500 13px 'DM Sans';color:var(--mute)}
+.card .btn{margin-top:12px;text-align:center;padding:11px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;counter-reset:s}
+.steps div{counter-increment:s;border-top:4px solid var(--gold);padding-top:14px}
+.steps div::before{content:counter(s);font:800 30px 'Bricolage Grotesque';color:var(--pink)}
+.steps h3{font-size:19px;margin:4px 0}
+.steps p{margin:0;color:var(--mute);font-size:15px}
+.form{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px;display:grid;gap:14px;grid-template-columns:1fr 1fr}
+@media(max-width:620px){.form{grid-template-columns:1fr}}
+.form .full{grid-column:1/-1}
+label{display:grid;gap:5px;font-weight:700;font-size:14px}
+input,select,textarea{font:400 16px 'DM Sans',sans-serif;padding:11px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+textarea{min-height:84px;resize:vertical}
+.total{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.total b{font:800 26px 'Bricolage Grotesque'}
+.err{color:var(--pink);font-size:14px;min-height:20px}
+.rev{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.rev blockquote{margin:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;font-size:15px}
+.rev cite{display:block;margin-top:10px;font-style:normal;font-weight:700;color:var(--pink);font-size:14px}
+footer{background:var(--plum);color:#fff;padding:34px 0;margin-top:30px}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) footer{background:#120a17;color:#fbeef2}}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<a class="logo" href="#top">Anoohya's Box of Surprises</a>
+<ul><li><a href="#boxes">Boxes</a></li><li><a href="#how">How it works</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#order">Order</a></li></ul>
+</div></nav>
+
+<main id="top">
+<div class="wrap">
+<div class="hero">
+<div>
+<h1>Gifts that make people gasp, then grin.</h1>
+<p>Handmade surprise boxes for birthdays, anniversaries and "just because." Tell us who it's for, and we pack the rest.</p>
+<div class="cta"><a class="btn" href="#order">Order a box</a><a class="btn alt" href="#boxes">See the boxes</a></div>
+</div>
+<div class="stage" aria-label="Tap the box to open it">
+<span class="pop p1" aria-hidden="true">🎈</span><span class="pop p2" aria-hidden="true">💌</span><span class="pop p3" aria-hidden="true">🌸</span><span class="pop p4" aria-hidden="true">🍫</span><span class="pop p5" aria-hidden="true">✨</span>
+<button class="bx" id="bx" aria-pressed="false" aria-label="Open the surprise box"><span class="base"></span><span class="lid"></span><span class="hint">Tap the box to open it</span></button>
+</div>
+</div>
+</div>
+
+<section id="boxes"><div class="wrap">
+<h2>Pick a box</h2>
+<p class="sub">Every box is made to order and can be personalised with a name, photos and a handwritten note.</p>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section id="how"><div class="wrap">
+<h2>How it works</h2>
+<p class="sub">Four steps, and you never have to wrap anything.</p>
+<div class="steps">
+<div><h3>Choose a box</h3><p>Select the style and size that suits the occasion.</p></div>
+<div><h3>Tell us the details</h3><p>Name, date, favourite things, and your message.</p></div>
+<div><h3>We make it</h3><p>Your box is packed by hand and photographed for approval.</p></div>
+<div><h3>Delivered</h3><p>Sent to your door or straight to the lucky person.</p></div>
+</div>
+</div></section>
+
+<section id="reviews"><div class="wrap">
+<h2>Kind words</h2>
+<p class="sub">Sample reviews. Replace these with your real customers' messages.</p>
+<div class="rev">
+<blockquote>My sister cried happy tears. Every little detail was so thoughtful.<cite>Priya, Hyderabad</cite></blockquote>
+<blockquote>Arrived on time and looked even better than the photos.<cite>Karthik, Nellore</cite></blockquote>
+<blockquote>The anniversary box was the best part of our day.<cite>Sneha, Chennai</cite></blockquote>
+</div>
+</div></section>
+
+<section id="order"><div class="wrap">
+<h2>Place your order</h2>
+<p class="sub">Fill this in and your order opens in WhatsApp, ready to send.</p>
+<div class="form">
+<label>Your name<input id="n" autocomplete="name"></label>
+<label>Phone number<input id="ph" type="tel" autocomplete="tel"></label>
+<label>Box<select id="sel"></select></label>
+<label>Quantity<input id="q" type="number" min="1" max="20" value="1"></label>
+<label>Occasion<select id="oc"><option>Birthday</option><option>Anniversary</option><option>Wedding</option><option>Thank you</option><option>Just because</option></select></label>
+<label>Delivery date<input id="dt" type="date"></label>
+<label class="full">Delivery address<textarea id="ad" autocomplete="street-address"></textarea></label>
+<label class="full">Message or special requests<textarea id="ms"></textarea></label>
+<div class="full total"><span>Total: <b id="tot">₹0</b></span><button class="btn" id="send" type="button">Send order on WhatsApp</button></div>
+<div class="full err" id="err" role="alert"></div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<div><b>Anoohya's Box of Surprises</b><br>Handmade with love in Andhra Pradesh</div>
+<div id="contact"></div>
+</div></footer>
+
+<script>
+// EDIT THESE: your WhatsApp number (country code, no +) and box details
+var WA="919999999999",EMAIL="hello@example.com";
+var BOXES=[
+{e:"🎂",n:"Birthday Pop Box",d:"Balloons, a mini cake card, chocolates and a photo wall that pops out.",p:899},
+{e:"💕",n:"Love Explosion Box",d:"Layers of photo cards, notes and petals that unfold in all four sides.",p:1299},
+{e:"🍫",n:"Chocolate Hamper",d:"Handpicked chocolates and treats with a personalised message tag.",p:699},
+{e:"🎁",n:"Custom Surprise Box",d:"Tell us the theme and budget. We design the whole box around it.",p:1499}
+];
+function inr(x){return "₹"+x.toLocaleString("en-IN")}
+var grid=document.getElementById("grid"),sel=document.getElementById("sel");
+BOXES.forEach(function(b,i){
+ var c=document.createElement("div");c.className="card";
+ c.innerHTML='<div class="em" aria-hidden="true">'+b.e+'</div><h3>'+b.n+'</h3><p>'+b.d+'</p><div class="price">'+inr(b.p)+' <small>starting</small></div><a class="btn" href="#order" data-i="'+i+'">Choose this box</a>';
+ grid.appendChild(c);
+ var o=document.createElement("option");o.value=i;o.textContent=b.n+" ("+inr(b.p)+")";sel.appendChild(o);
+});
+grid.addEventListener("click",function(e){var a=e.target.closest("[data-i]");if(a){sel.value=a.dataset.i;calc()}});
+function calc(){var q=Math.max(1,parseInt(document.getElementById("q").value)||1);document.getElementById("tot").textContent=inr(BOXES[sel.value].p*q)}
+sel.onchange=calc;document.getElementById("q").oninput=calc;calc();
+var t=new Date();t.setDate(t.getDate()+3);document.getElementById("dt").min=t.toISOString().slice(0,10);
+document.getElementById("send").onclick=function(){
+ var g=function(i){return document.getElementById(i).value.trim()},err=document.getElementById("err");
+ if(!g("n")||!/^\d{10}$/.test(g("ph").replace(/\D/g,"").slice(-10))||!g("ad")||!g("dt")){err.textContent="Please add your name, a 10-digit phone number, delivery address and date.";return}
+ err.textContent="";
+ var b=BOXES[sel.value],q=Math.max(1,parseInt(g("q"))||1);
+ var m="Hi! I'd like to order:\n*"+b.n+"* x "+q+" = "+inr(b.p*q)+"\nOccasion: "+g("oc")+"\nDelivery date: "+g("dt")+"\nName: "+g("n")+"\nPhone: "+g("ph")+"\nAddress: "+g("ad")+(g("ms")?"\nNote: "+g("ms"):"");
+ window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(m),"_blank","noopener");
+};
+document.getElementById("contact").innerHTML='WhatsApp: +'+WA+'<br>Email: '+EMAIL;
+var bx=document.getElementById("bx"),st=bx.parentElement;
+bx.onclick=function(){var o=st.classList.toggle("open");bx.setAttribute("aria-pressed",o);bx.querySelector(".hint").textContent=o?"Surprise! Tap to close":"Tap the box to open it"};
+setTimeout(function(){st.classList.add("open")},900);
+</script>
+</body>
+</html>
